@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Konten | Portal Adiwiyata SMADA</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<header class="admin-header">
+    <div class="admin-header-text">
+        <h1>Admin Konten Adiwiyata SMADA</h1>
+        <p>Buat data kegiatan, artikel, berita, galeri, dan tanaman. Setelah folder dihubungkan, klik Simpan akan langsung menulis JSON ke <code>data/&lt;kategori&gt;/</code> dan gambar ke <code>assets/images/&lt;kategori&gt;/</code>.</p>
+    </div>
+    <a class="btn btn-outline" href="index.html">← Kembali ke Portal</a>
+</header>
+
+<nav class="admin-tabs" role="tablist">
+    <button class="tab active" data-tab="kegiatan" type="button">Kegiatan</button>
+    <button class="tab" data-tab="artikel" type="button">Artikel</button>
+    <button class="tab" data-tab="berita" type="button">Berita</button>
+    <button class="tab" data-tab="galeri" type="button">Galeri</button>
+    <button class="tab" data-tab="tanaman" type="button">Tanaman</button>
+</nav>
+
+<main class="admin-main">
+
+    <section class="panel" data-panel="kegiatan">
+        <div class="panel-grid">
+            <div class="form-card">
+                <h2 id="kegiatan-form-title">Tambah Kegiatan</h2>
+                <form id="form-kegiatan" data-category="kegiatan">
+                    <input type="hidden" data-field="__original">
+                    <div class="field">
+                        <label>Nama file JSON</label>
+                        <input type="text" data-field="id" placeholder="otomatis dari judul, boleh diubah">
+                        <small class="form-note">Disimpan sebagai <code>data/kegiatan/<strong>nama-file</strong>.json</code>.</small>
+                    </div>
+                    <div class="field"><label>Judul</label><input type="text" data-field="judul" required></div>
+                    <div class="field-row">
+                        <div class="field"><label>Tanggal</label><input type="date" data-field="tanggal" required></div>
+                        <div class="field"><label>Kategori</label><input type="text" data-field="kategori" placeholder="mis. Penghijauan" required></div>
+                    </div>
+                    <div class="field"><label>Ringkasan</label><textarea data-field="ringkas" rows="5" required></textarea></div>
+                    <div class="field">
+                        <label>Path foto</label>
+                        <input type="text" data-field="foto" placeholder="assets/images/kegiatan/nama-foto.jpg">
+                        <button type="button" class="btn btn-mini" data-trigger-upload>Pilih gambar</button>
+                        <input type="file" accept="image/*" data-upload hidden>
+                        <div class="preview" data-preview></div>
+                        <small class="form-note">Saat folder terhubung, gambar otomatis ditulis ke <code>assets/images/kegiatan/</code>.</small>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-green">Simpan</button>
+                        <button type="button" class="btn btn-mini" data-reset>Batal Edit</button>
+                    </div>
+                </form>
+            </div>
+            <div class="list-card">
+                <div class="list-head">
+                    <h2>Daftar Kegiatan (<span data-count>0</span>)</h2>
+                    <div class="list-actions">
+                        <button type="button" class="btn btn-mini" data-export-index>Unduh _index.json</button>
+                        <label class="btn btn-mini">Impor JSON<input type="file" accept=".json" data-import hidden></label>
+                    </div>
+                </div>
+                <div class="entry-list" data-list></div>
+                <details class="json-details"><summary>Lihat JSON gabungan</summary><pre data-json></pre></details>
+            </div>
+        </div>
+    </section>
+
+    <section class="panel" data-panel="artikel" hidden>
+        <div class="panel-grid">
+            <div class="form-card">
+                <h2 id="artikel-form-title">Tambah Artikel</h2>
+                <form id="form-artikel" data-category="artikel">
+                    <input type="hidden" data-field="__original">
+                    <div class="field">
+                        <label>Nama file JSON</label>
+                        <input type="text" data-field="id" placeholder="otomatis dari judul, boleh diubah">
+                        <small class="form-note">Disimpan sebagai <code>data/artikel/<strong>nama-file</strong>.json</code>.</small>
+                    </div>
+                    <div class="field"><label>Judul</label><input type="text" data-field="judul" required></div>
+                    <div class="field-row">
+                        <div class="field"><label>Penulis</label><input type="text" data-field="penulis" required></div>
+                        <div class="field"><label>Tanggal</label><input type="date" data-field="tanggal" required></div>
+                    </div>
+                    <div class="field">
+                        <label>Isi artikel (array paragraf)</label>
+                        <textarea data-field="isi" rows="9" required placeholder="Paragraf pertama...&#10;&#10;Paragraf kedua...&#10;&#10;Pisahkan antar paragraf dengan satu baris kosong."></textarea>
+                        <small class="form-note">Disimpan sebagai array <code>isi: [...]</code>.</small>
+                    </div>
+                    <div class="field">
+                        <label>Path foto</label>
+                        <input type="text" data-field="foto" placeholder="assets/images/artikel/nama-foto.jpg">
+                        <button type="button" class="btn btn-mini" data-trigger-upload>Pilih gambar</button>
+                        <input type="file" accept="image/*" data-upload hidden>
+                        <div class="preview" data-preview></div>
+                        <small class="form-note">Saat folder terhubung, gambar otomatis ditulis ke <code>assets/images/artikel/</code>.</small>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-green">Simpan</button>
+                        <button type="button" class="btn btn-mini" data-reset>Batal Edit</button>
+                    </div>
+                </form>
+            </div>
+            <div class="list-card">
+                <div class="list-head">
+                    <h2>Daftar Artikel (<span data-count>0</span>)</h2>
+                    <div class="list-actions">
+                        <button type="button" class="btn btn-mini" data-export-index>Unduh _index.json</button>
+                        <label class="btn btn-mini">Impor JSON<input type="file" accept=".json" data-import hidden></label>
+                    </div>
+                </div>
+                <div class="entry-list" data-list></div>
+                <details class="json-details"><summary>Lihat JSON gabungan</summary><pre data-json></pre></details>
+            </div>
+        </div>
+    </section>
+
+    <section class="panel" data-panel="berita" hidden>
+        <div class="panel-grid">
+            <div class="form-card">
+                <h2 id="berita-form-title">Tambah Berita</h2>
+                <form id="form-berita" data-category="berita">
+                    <input type="hidden" data-field="__original">
+                    <div class="field">
+                        <label>Nama file JSON</label>
+                        <input type="text" data-field="id" placeholder="otomatis dari judul, boleh diubah">
+                        <small class="form-note">Disimpan sebagai <code>data/berita/<strong>nama-file</strong>.json</code>.</small>
+                    </div>
+                    <div class="field"><label>Judul</label><input type="text" data-field="judul" required></div>
+                    <div class="field-row">
+                        <div class="field"><label>Tanggal</label><input type="date" data-field="tanggal" required></div>
+                        <div class="field"><label>Kategori</label><input type="text" data-field="kategori" placeholder="mis. Kebersihan" required></div>
+                    </div>
+                    <div class="field"><label>Ringkasan</label><textarea data-field="ringkas" rows="5" required></textarea></div>
+                    <div class="field">
+                        <label>Path foto</label>
+                        <input type="text" data-field="foto" placeholder="assets/images/berita/nama-foto.jpg">
+                        <button type="button" class="btn btn-mini" data-trigger-upload>Pilih gambar</button>
+                        <input type="file" accept="image/*" data-upload hidden>
+                        <div class="preview" data-preview></div>
+                        <small class="form-note">Saat folder terhubung, gambar otomatis ditulis ke <code>assets/images/berita/</code>.</small>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-green">Simpan</button>
+                        <button type="button" class="btn btn-mini" data-reset>Batal Edit</button>
+                    </div>
+                </form>
+            </div>
+            <div class="list-card">
+                <div class="list-head">
+                    <h2>Daftar Berita (<span data-count>0</span>)</h2>
+                    <div class="list-actions">
+                        <button type="button" class="btn btn-mini" data-export-index>Unduh _index.json</button>
+                        <label class="btn btn-mini">Impor JSON<input type="file" accept=".json" data-import hidden></label>
+                    </div>
+                </div>
+                <div class="entry-list" data-list></div>
+                <details class="json-details"><summary>Lihat JSON gabungan</summary><pre data-json></pre></details>
+            </div>
+        </div>
+    </section>
+
+    <section class="panel" data-panel="galeri" hidden>
+        <div class="panel-grid">
+            <div class="form-card">
+                <h2 id="galeri-form-title">Tambah Foto Galeri</h2>
+                <form id="form-galeri" data-category="galeri">
+                    <input type="hidden" data-field="__original">
+                    <div class="field">
+                        <label>Nama file JSON</label>
+                        <input type="text" data-field="id" placeholder="otomatis dari judul, boleh diubah">
+                        <small class="form-note">Disimpan sebagai <code>data/galeri/<strong>nama-file</strong>.json</code>.</small>
+                    </div>
+                    <div class="field"><label>Judul</label><input type="text" data-field="judul" required></div>
+                    <div class="field"><label>Tanggal</label><input type="date" data-field="tanggal" required></div>
+                    <div class="field">
+                        <label>Path foto</label>
+                        <input type="text" data-field="foto" placeholder="assets/images/galeri/nama-foto.jpg">
+                        <button type="button" class="btn btn-mini" data-trigger-upload>Pilih gambar</button>
+                        <input type="file" accept="image/*" data-upload hidden>
+                        <div class="preview" data-preview></div>
+                        <small class="form-note">Saat folder terhubung, gambar otomatis ditulis ke <code>assets/images/galeri/</code>.</small>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-green">Simpan</button>
+                        <button type="button" class="btn btn-mini" data-reset>Batal Edit</button>
+                    </div>
+                </form>
+            </div>
+            <div class="list-card">
+                <div class="list-head">
+                    <h2>Daftar Galeri (<span data-count>0</span>)</h2>
+                    <div class="list-actions">
+                        <button type="button" class="btn btn-mini" data-export-index>Unduh _index.json</button>
+                        <label class="btn btn-mini">Impor JSON<input type="file" accept=".json" data-import hidden></label>
+                    </div>
+                </div>
+                <div class="entry-list" data-list></div>
+                <details class="json-details"><summary>Lihat JSON gabungan</summary><pre data-json></pre></details>
+            </div>
+        </div>
+    </section>
+
+    <section class="panel" data-panel="tanaman" hidden>
+        <div class="panel-grid">
+            <div class="form-card">
+                <h2 id="tanaman-form-title">Tambah Tanaman</h2>
+                <form id="form-tanaman" data-category="tanaman">
+                    <input type="hidden" data-field="__original">
+                    <div class="field">
+                        <label>Nama file JSON / ID tanaman</label>
+                        <input type="text" data-field="id" placeholder="otomatis dari nama, boleh diubah">
+                        <small class="form-note">Disimpan sebagai <code>data/tanaman/<strong>nama-file</strong>.json</code> dan dipakai di <code>tanaman-detail.html?id=<strong>nama-file</strong></code>. Jangan diubah setelah QR dicetak.</small>
+                    </div>
+                    <div class="field-row">
+                        <div class="field"><label>Nama tanaman</label><input type="text" data-field="nama" required></div>
+                        <div class="field"><label>Nama latin</label><input type="text" data-field="latin" required></div>
+                    </div>
+                    <div class="field-row">
+                        <div class="field"><label>Tanggal tanam</label><input type="date" data-field="tanggalTanam" required></div>
+                        <div class="field"><label>Penanam</label><input type="text" data-field="penanam" required></div>
+                    </div>
+                    <div class="field"><label>Lokasi</label><input type="text" data-field="lokasi" placeholder="mis. Taman Depan" required></div>
+                    <div class="field"><label>Manfaat</label><textarea data-field="manfaat" rows="3" required></textarea></div>
+                    <div class="field">
+                        <label>Path foto</label>
+                        <input type="text" data-field="foto" placeholder="assets/images/tanaman/nama-foto.jpg">
+                        <button type="button" class="btn btn-mini" data-trigger-upload>Pilih gambar</button>
+                        <input type="file" accept="image/*" data-upload hidden>
+                        <div class="preview" data-preview></div>
+                        <small class="form-note">Saat folder terhubung, gambar otomatis ditulis ke <code>assets/images/tanaman/</code>.</small>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-green">Simpan</button>
+                        <button type="button" class="btn btn-mini" data-reset>Batal Edit</button>
+                    </div>
+                </form>
+            </div>
+            <div class="list-card">
+                <div class="list-head">
+                    <h2>Daftar Tanaman (<span data-count>0</span>)</h2>
+                    <div class="list-actions">
+                        <button type="button" class="btn btn-mini" data-export-index>Unduh _index.json</button>
+                        <label class="btn btn-mini">Impor JSON<input type="file" accept=".json" data-import hidden></label>
+                    </div>
+                </div>
+                <div class="entry-list" data-list></div>
+                <details class="json-details"><summary>Lihat JSON gabungan</summary><pre data-json></pre></details>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="admin-footer">
+    <div style="flex:1;min-width:280px">
+        <p>Data tersimpan di browser. Bila folder terhubung, klik Simpan langsung menulis ke <code>data/</code> dan <code>assets/images/</code>.</p>
+        <p style="margin-top:6px;font-size:12px" id="sync-status">Folder proyek belum terhubung. Klik Hubungkan Folder untuk menulis otomatis.</p>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+        <button type="button" class="btn btn-mini" id="btn-connect">Hubungkan Folder</button>
+        <button type="button" class="btn btn-mini" id="btn-import-folder" disabled>Impor dari Folder</button>
+        <button type="button" class="btn btn-mini" id="btn-sync-all" disabled>Simpan Semua ke Folder</button>
+        <button type="button" class="btn btn-mini" id="btn-bundle">Unduh data-bundle.js</button>
+        <button type="button" class="btn btn-mini btn-danger" id="btn-reset-all">Hapus Semua Data</button>
+    </div>
+</footer>
+
+<script src="js/admin.js"></script>
+</body>
+</html>

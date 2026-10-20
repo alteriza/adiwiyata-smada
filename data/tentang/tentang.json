@@ -1,0 +1,29 @@
+{
+  "apaItu": [
+    "Adiwiyata adalah program pembinaan sekolah peduli dan berbudaya lingkungan hidup. Melalui program ini, sekolah mengajak seluruh warganya untuk menjaga kebersihan, menghemat sumber daya, dan merawat alam.",
+    "Di SMAN 2 Madiun, Adiwiyata bukan sekadar mengejar predikat. Yang lebih penting adalah perubahan kebiasaan: apakah kita konsisten menjaga kebersihan, memilah sampah, dan merawat tanaman setiap hari.",
+    "Pada 4 Juni 2026, SMAN 2 Madiun memperkuat komitmen menuju Sekolah Adiwiyata melalui sosialisasi program, pengukuhan Tim Adiwiyata, ikrar, dan penandatanganan komitmen bersama."
+  ],
+  "fotoUtama": "assets/images/tentang/sosialisasi.jpg",
+  "fotoCaption": "Sosialisasi bersama guru dan siswa",
+  "visi": "Terwujudnya warga sekolah yang peduli, berbudaya, dan bertindak nyata menjaga lingkungan hidup demi sekolah yang bersih, sehat, dan lestari.",
+  "misi": [
+    "Menumbuhkan kesadaran lingkungan pada seluruh warga sekolah.",
+    "Mewujudkan lingkungan sekolah yang bersih, sehat, dan hijau.",
+    "Mengintegrasikan nilai lingkungan dalam pembelajaran.",
+    "Mengelola sampah, air, dan energi secara bijak.",
+    "Menjalin kerja sama dengan masyarakat dan mitra peduli lingkungan."
+  ],
+  "fokus": [
+    { "judul": "Lingkungan Bersih", "teks": "Membangun lingkungan sekolah yang bersih dan tertata." },
+    { "judul": "Lingkungan Sehat", "teks": "Menciptakan lingkungan yang mendukung kesehatan warga sekolah." },
+    { "judul": "Kesadaran Lingkungan", "teks": "Menumbuhkan kesadaran bahwa menjaga lingkungan adalah tanggung jawab bersama." },
+    { "judul": "Budaya Berkelanjutan", "teks": "Menjadikan kepedulian lingkungan kebiasaan yang konsisten." }
+  ],
+  "timeline": [
+    { "waktu": "1 September 1953", "judul": "SMAN 2 Madiun berdiri", "teks": "Sekolah mulai berdiri dan terus berkembang di Kota Madiun." },
+    { "waktu": "[ISI TAHUN]", "judul": "Mulai menggagas program lingkungan", "teks": "[CONTOH] Tuliskan awal kegiatan lingkungan di SMADA." },
+    { "waktu": "4 Juni 2026", "judul": "Sosialisasi dan pengukuhan Tim Adiwiyata", "teks": "Sosialisasi program, pengukuhan Tim Adiwiyata, ikrar, dan penandatanganan komitmen bersama." },
+    { "waktu": "[ISI TANGGAL]", "judul": "Pencapaian terkini", "teks": "[CONTOH] Tuliskan penilaian atau penghargaan Adiwiyata yang sudah diraih." }
+  ]
+}

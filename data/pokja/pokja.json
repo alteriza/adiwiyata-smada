@@ -1,0 +1,33 @@
+{
+  "pembina": { "nama": "[ISI NAMA]", "jabatan": "Kepala Sekolah / Guru Pembina", "foto": "assets/images/pokja/pembina.jpg" },
+  "ketua":   { "nama": "[ISI NAMA]", "jabatan": "Ketua Pokja (Siswa)", "foto": "assets/images/pokja/ketua.jpg" },
+  "divisi": [
+    {
+      "nama": "Divisi Penghijauan",
+      "deskripsi": "Menanam, merawat, dan mendata tanaman sekolah.",
+      "anggota": [
+        { "nama": "[Nama Anggota 1]", "peran": "Koordinator", "foto": "assets/images/pokja/penghijauan-1.jpg" },
+        { "nama": "[Nama Anggota 2]", "peran": "Anggota", "foto": "assets/images/pokja/penghijauan-2.jpg" },
+        { "nama": "[Nama Anggota 3]", "peran": "Anggota", "foto": "assets/images/pokja/penghijauan-3.jpg" }
+      ]
+    },
+    {
+      "nama": "Divisi Pengelolaan Sampah",
+      "deskripsi": "Memilah sampah, kompos, dan daur ulang.",
+      "anggota": [
+        { "nama": "[Nama Anggota 1]", "peran": "Koordinator", "foto": "assets/images/pokja/sampah-1.jpg" },
+        { "nama": "[Nama Anggota 2]", "peran": "Anggota", "foto": "assets/images/pokja/sampah-2.jpg" },
+        { "nama": "[Nama Anggota 3]", "peran": "Anggota", "foto": "assets/images/pokja/sampah-3.jpg" }
+      ]
+    },
+    {
+      "nama": "Divisi Kampanye",
+      "deskripsi": "Mengajak warga sekolah lewat media sosial, poster, dan lomba.",
+      "anggota": [
+        { "nama": "[Nama Anggota 1]", "peran": "Koordinator", "foto": "assets/images/pokja/kampanye-1.jpg" },
+        { "nama": "[Nama Anggota 2]", "peran": "Anggota", "foto": "assets/images/pokja/kampanye-2.jpg" },
+        { "nama": "[Nama Anggota 3]", "peran": "Anggota", "foto": "assets/images/pokja/kampanye-3.jpg" }
+      ]
+    }
+  ]
+}

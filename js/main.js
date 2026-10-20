@@ -1,10 +1,47 @@
-/* =========================================================
-   main.js - navbar, footer, dan pengisi konten dari data.js
-   Biasanya tidak perlu diubah. Edit isi di js/data.js.
-   ========================================================= */
-
-(function () {
+(async function () {
     "use strict";
+
+    try {
+        await loadAllData();
+    } catch (err) {
+        console.error("[data]", err);
+        const isFileMode = err && (err.message === "__FILE_MODE__" || err.message === "__FILE_MODE_INCOMPLETE__");
+        const isIncomplete = err && err.message === "__FILE_MODE_INCOMPLETE__";
+
+        if (isFileMode) {
+            document.body.innerHTML =
+                '<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px;font-family:system-ui,sans-serif;background:#f1fbe9;color:#263238">' +
+                '<div style="max-width:680px;background:#fff;padding:36px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.08)">' +
+                '<h2 style="color:#c0392b;margin-bottom:12px">' +
+                (isIncomplete ? "Bundle data belum lengkap" : "Butuh data-bundle.js untuk mode offline") +
+                '</h2>' +
+                '<p style="margin-bottom:16px;line-height:1.6">Browser tidak mengizinkan website membaca folder <code>data/</code> saat dibuka lewat <code>file://</code>. Solusinya salah satu:</p>' +
+                '<p style="margin-bottom:8px"><strong>A. Jalankan server lokal (paling mudah)</strong></p>' +
+                '<ol style="margin:0 0 18px 20px;line-height:1.8">' +
+                '<li><code style="background:#f0f0f0;padding:2px 6px;border-radius:4px">cd nama_folder</code> lalu <code style="background:#f0f0f0;padding:2px 6px;border-radius:4px">python -m http.server 8000</code></li>' +
+                '<li>Buka <a href="http://localhost:8000" style="color:#1f6b36">http://localhost:8000</a></li>' +
+                '</ol>' +
+                '<p style="margin-bottom:8px"><strong>B. Buat bundle untuk mode offline</strong></p>' +
+                '<ol style="margin:0 0 18px 20px;line-height:1.8">' +
+                '<li>Jalankan server lokal (langkah A) lalu buka <code>http://localhost:8000/admin.html</code></li>' +
+                '<li>Klik tombol <strong>Unduh data-bundle.js</strong></li>' +
+                '<li>Taruh <code>data-bundle.js</code> di folder <code>js/</code></li>' +
+                '<li>Buka kembali <code>index.html</code> lewat file:// — sekarang sudah bisa</li>' +
+                '</ol>' +
+                '<p style="color:#68736c;font-size:14px">Bundle harus dibuat dari admin yang dijalankan lewat server, karena admin perlu membaca <code>data/site/</code>, <code>data/tentang/</code>, dan <code>data/pokja/</code>.</p>' +
+                '</div></div>';
+            return;
+        }
+
+        document.body.innerHTML =
+            '<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px;font-family:system-ui,sans-serif;background:#f1fbe9;color:#263238">' +
+            '<div style="max-width:640px;background:#fff;padding:36px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.08)">' +
+            '<h2 style="color:#c0392b;margin-bottom:12px">Gagal memuat data</h2>' +
+            '<p style="margin-bottom:12px">' + (err && err.message ? err.message : String(err)) + '</p>' +
+            '<p style="color:#68736c;font-size:14px">Pastikan folder <code>data/</code> tersedia dan server mengizinkan directory listing (mis. <code>python -m http.server</code>).</p>' +
+            '</div></div>';
+        return;
+    }
 
     const $ = (sel, root) => (root || document).querySelector(sel);
     const page = document.body.dataset.page || "beranda";
@@ -20,7 +57,6 @@
     }
     const inisial = (nama) => String(nama).replace(/[\[\]]/g, "").trim().split(/\s+/).slice(0, 2).map(w => w[0] || "").join("").toUpperCase() || "?";
 
-    /* Gambar dengan placeholder: bila file belum ada, tampil kotak hijau + teks */
     function foto(src, alt, kelas) {
         return `<div class="ph ${kelas || ""}"><span class="ph-text">${esc(alt)}</span>` +
                `<img src="${esc(src)}" alt="${esc(alt)}" loading="lazy" onerror="this.remove()"></div>`;
@@ -29,7 +65,6 @@
         return `<div class="avatar">${esc(inisial(nama))}<img src="${esc(src)}" alt="${esc(nama)}" onerror="this.remove()"></div>`;
     }
 
-    /* ---------------- Navbar & Footer ---------------- */
     const MENU = [
         { id: "beranda", label: "Beranda", href: "index.html" },
         { id: "tentang", label: "Tentang", href: "tentang.html" },
@@ -97,18 +132,15 @@
         </footer>`;
     }
 
-    /* ---------------- Helper umum ---------------- */
     function jumlahTanaman() {
         return STATS.tanamanManual != null ? STATS.tanamanManual + "" : PLANTS.length + "";
     }
 
-    /* Formulir statis: membuka aplikasi email dengan isi yang sudah terisi */
     function kirimEmail(subjek, baris) {
         const body = baris.map(([k, v]) => `${k}: ${v}`).join("\n");
         location.href = `mailto:${SITE.email}?subject=${encodeURIComponent(subjek)}&body=${encodeURIComponent(body)}`;
     }
 
-    /* ---------------- Beranda ---------------- */
     function renderBeranda() {
         const stats = $("#stats");
         if (stats) {
@@ -134,7 +166,6 @@
         }
     }
 
-    /* ---------------- Tentang ---------------- */
     function renderTentang() {
         const apa = $("#apa-itu");
         if (apa) apa.innerHTML = TENTANG.apaItu.map(p => `<p>${esc(p)}</p>`).join("");
@@ -152,7 +183,6 @@
             `<div class="tl-item reveal"><time>${esc(t.waktu)}</time><h3>${esc(t.judul)}</h3><p>${esc(t.teks)}</p></div>`).join("");
     }
 
-    /* ---------------- Pokja ---------------- */
     function renderPokja() {
         const org = $("#org");
         if (org) {
@@ -177,7 +207,6 @@
         }
     }
 
-    /* ---------------- Ensiklopedia Tanaman ---------------- */
     function kartuTanaman(p) {
         return `
         <article class="plant-card reveal">
@@ -250,7 +279,6 @@
             </div>`;
     }
 
-    /* ---------------- Galeri ---------------- */
     function renderGaleri() {
         const g = $("#gallery-grid");
         if (!g) return;
@@ -290,7 +318,6 @@
         if (location.hash === "#artikel") document.querySelector('.tab[data-tab="artikel"]').click();
     }
 
-    /* ---------------- Kontak ---------------- */
     function renderKontak() {
         const info = $("#kontak-info");
         if (!info) return;
@@ -317,7 +344,6 @@
         });
     }
 
-    /* ---------------- Animasi muncul ---------------- */
     let observer = null;
     function observeReveal() {
         const els = document.querySelectorAll(".reveal:not(.show)");
@@ -332,7 +358,6 @@
         els.forEach((el, i) => { el.style.setProperty("--d", (i % 4) * 90 + "ms"); observer.observe(el); });
     }
 
-    /* ---------------- Jalankan ---------------- */
     renderNav();
     renderFooter();
     renderBeranda();

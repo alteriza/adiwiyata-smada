@@ -1,0 +1,24 @@
+{
+  "site": {
+    "nama": "SMAN 2 Madiun",
+    "singkatan": "SMADA",
+    "tagline": "Sekolah Prestasi",
+    "motto": "Widya Tinata Ambuka Budi",
+    "logo": "assets/images/logo/logo-sman2.png",
+    "logoCadangan": "https://smanegeri2madiun.sch.id/wp-content/uploads/2025/05/cropped-logo-pojok-scaled-1.png",
+    "alamat": "Jl. Biliton No. 24, Madiun Lor, Kecamatan Manguharjo, Kota Madiun, Jawa Timur 63122",
+    "telepon": "0351-453542",
+    "website": "smanegeri2madiun.sch.id",
+    "websiteUrl": "https://smanegeri2madiun.sch.id",
+    "email": "ISI_EMAIL_ADIWIYATA@gmail.com",
+    "instagram": "https://www.instagram.com/",
+    "tiktok": "https://www.tiktok.com/",
+    "youtube": "",
+    "mapsEmbed": "https://maps.google.com/maps?q=SMAN%202%20Madiun&t=&z=15&ie=UTF8&iwloc=&output=embed"
+  },
+  "stats": {
+    "tanamanManual": null,
+    "anggotaPokja": "100+",
+    "program": "10"
+  }
+}
