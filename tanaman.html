@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ensiklopedia Tanaman | SMAN 2 Madiun</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="tanaman">
+
+<div id="site-header"></div>
+
+<div class="page-hero">
+    <small>Keanekaragaman Hayati</small>
+    <h1>Ensiklopedia Tanaman</h1>
+    <p>Pangkalan data seluruh tanaman di lingkungan SMAN 2 Madiun.</p>
+</div>
+
+<main>
+    <section class="section alt tight">
+        <div class="toolbar">
+            <input type="search" id="cari" placeholder="Cari tanaman (nama, nama latin, penanam)..." aria-label="Cari tanaman">
+            <select id="filter-lokasi" aria-label="Filter lokasi tanam"></select>
+        </div>
+        <p class="result-info" id="result-info"></p>
+        <div class="plant-grid" id="plant-grid"></div>
+        <div class="empty" id="empty">
+            <h3>Tanaman tidak ditemukan</h3>
+            <p>Coba kata kunci atau lokasi lain.</p>
+        </div>
+    </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

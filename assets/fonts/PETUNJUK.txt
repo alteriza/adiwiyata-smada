@@ -1,0 +1,11 @@
+FONT POPPINS (opsional, tapi disarankan agar tampilan sama seperti desain)
+
+1. Buka https://fonts.google.com/specimen/Poppins lalu klik "Get font" > "Download all".
+2. Dari folder zip, ambil 4 file ini dan taruh di folder ini:
+   Poppins-Regular.ttf
+   Poppins-Medium.ttf
+   Poppins-SemiBold.ttf
+   Poppins-Bold.ttf
+
+Kalau file belum ada, website otomatis memakai font bawaan perangkat
+(tampilan tetap rapi dan tidak berubah-ubah saat refresh).

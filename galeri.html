@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri Kegiatan | SMAN 2 Madiun</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="galeri">
+
+<div id="site-header"></div>
+
+<div class="page-hero">
+    <small>Dokumentasi</small>
+    <h1>Galeri Kegiatan dan Artikel</h1>
+    <p>Aksi nyata warga SMADA dan tulisan edukasi seputar lingkungan hidup.</p>
+</div>
+
+<main>
+    <section class="section">
+        <div class="blob tr"></div>
+        <div class="tabs">
+            <button class="tab active" data-tab="foto" type="button">Album Foto</button>
+            <button class="tab" data-tab="artikel" type="button">Artikel Edukasi</button>
+        </div>
+        <div id="tab-foto"><div class="gallery-grid" id="gallery-grid"></div></div>
+        <div id="tab-artikel" style="display:none"><div id="articles"></div></div>
+    </section>
+</main>
+
+<div class="lightbox" id="lightbox">
+    <button type="button" aria-label="Tutup">×</button>
+    <img id="lb-img" src="" alt="">
+    <p id="lb-cap"></p>
+</div>
+
+<div id="site-footer"></div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

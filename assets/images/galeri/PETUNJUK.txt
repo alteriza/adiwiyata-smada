@@ -1,0 +1,1 @@
+Foto album: galeri-01.jpg sampai galeri-06.jpg (atau nama lain, sesuaikan di js/data.js).

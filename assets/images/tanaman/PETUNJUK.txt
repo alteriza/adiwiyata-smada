@@ -1,0 +1,1 @@
+Satu foto per tanaman, nama file sesuai kolom foto di js/data.js, mis. lidah-buaya.jpg, mangga.jpg. Rasio landscape/persegi.

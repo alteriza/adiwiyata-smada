@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak dan Saran | SMAN 2 Madiun</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="kontak">
+
+<div id="site-header"></div>
+
+<div class="page-hero">
+    <small>Hubungi Kami</small>
+    <h1>Kontak dan Saran</h1>
+    <p>Sampaikan saran, kritik, atau laporkan tanaman yang butuh perawatan.</p>
+</div>
+
+<main>
+    <section class="section">
+        <div class="blob tr"></div>
+        <div class="contact-layout">
+            <div class="contact-box" id="kontak-info"></div>
+            <div class="card">
+                <h3 style="color:var(--green-900);margin-bottom:16px;font-size:22px">Formulir Pesan</h3>
+                <form id="form-kontak">
+                    <div class="field"><label for="k-nama">Nama</label><input id="k-nama" name="nama" required></div>
+                    <div class="field">
+                        <label for="jenis">Jenis pesan</label>
+                        <select id="jenis" name="jenis">
+                            <option>Saran</option>
+                            <option>Kritik</option>
+                            <option>Laporan tanaman butuh perawatan</option>
+                        </select>
+                    </div>
+                    <div class="field"><label for="k-pesan">Pesan</label><textarea id="k-pesan" name="pesan" required placeholder="Tulis pesanmu. Untuk laporan tanaman, sebutkan nama dan lokasinya."></textarea></div>
+                    <button class="btn btn-green" type="submit">Kirim Pesan</button>
+                    <p class="form-note">Tombol ini membuka aplikasi email di perangkatmu dengan isi yang sudah terisi.</p>
+                </form>
+            </div>
+        </div>
+        <iframe class="school-map" id="peta" title="Peta lokasi SMA Negeri 2 Madiun" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
